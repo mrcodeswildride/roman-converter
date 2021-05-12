@@ -9,7 +9,7 @@ let dict = {
   L: 50,
   C: 100,
   D: 500,
-  M: 1000
+  M: 1000,
 }
 
 convertButton.addEventListener(`click`, showDecimal)
@@ -30,24 +30,25 @@ function showDecimal() {
       break
     }
 
-    let nextLetter = romanValue[i+1]
+    let nextLetter = romanValue[i + 1]
     let nextNumber = dict[nextLetter]
 
     if (!nextNumber || number >= nextNumber) {
       decimal += number
-    }
-    else {
-      decimal += (nextNumber - number)
+    } else {
+      decimal += nextNumber - number
       i++
     }
   }
 
   if (decimal == 0) {
     decimalParagraph.innerHTML = `Invalid input.`
-  }
-  else {
+  } else {
     decimalParagraph.innerHTML = `${romanValue} = ${decimal}`
   }
+
+  roman.value = ``
+  roman.focus()
 }
 
 function keyPressed(event) {
